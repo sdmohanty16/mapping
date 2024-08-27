@@ -7,6 +7,8 @@ import com.example.repository.CommentRepository;
 import com.example.repository.PostRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CommentServiceImpl implements CommentService{
 
@@ -21,4 +23,14 @@ public class CommentServiceImpl implements CommentService{
 
 
 
+    @Override
+    public boolean deleteComment(long id) {
+        Optional<Comment> commentOptional = commentRepository.findById(id);
+        if (commentOptional.isPresent()) {
+            commentRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

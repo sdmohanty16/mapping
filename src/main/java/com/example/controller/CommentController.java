@@ -31,5 +31,16 @@ public class CommentController {
         return new ResponseEntity<>(cmnt,HttpStatus.OK);
     }
 
+    // http://localhost:8080/api/v1/comments/id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteComment(@RequestParam long id) {
+        boolean isDeleted = commentService.deleteComment(id);
+        if (isDeleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }

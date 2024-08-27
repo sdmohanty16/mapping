@@ -5,4 +5,5 @@ import com.example.entity.Comment;
 public interface CommentService{
 
 
+    boolean deleteComment(long id);
 }

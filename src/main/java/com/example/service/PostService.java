@@ -10,4 +10,6 @@ public interface PostService {
 
 
     Comment createComment(Comment comment, long postId);
+
+    boolean deletePost(long id);
 }
